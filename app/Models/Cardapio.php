@@ -14,13 +14,8 @@ class Cardapio extends Model
     protected $primaryKey = 'id';
     public $incrementing = true;
 
-
-
     public function getImageForImg(){
         return "data:image/jpg;base64," .  base64_encode($this->foto) ;
     }
-
-
-
 
 }
