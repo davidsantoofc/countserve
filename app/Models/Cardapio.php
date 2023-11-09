@@ -15,7 +15,9 @@ class Cardapio extends Model
     public $incrementing = true;
 
     public function getImageForImg(){
+        // var_dump($this->fillable);
         return "data:image/jpg;base64," .  base64_encode($this->foto) ;
+
     }
 
 }

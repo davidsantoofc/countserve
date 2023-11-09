@@ -8,10 +8,10 @@ use App\Models\Cardapio;
 
 class CardapioController extends Controller
 {
-    public function show(): View
+    public function listarCardapios(): View
     {
         $cardapios = Cardapio::all();
 
-        return view('cardapio.show', ['cardapios' => $cardapios]);
+        return view('cardapio.listarCardapios', ['cardapios' => $cardapios]);
     }
 }
