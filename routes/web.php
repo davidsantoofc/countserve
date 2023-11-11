@@ -30,6 +30,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::get('cardapio', [CardapioController::class, 'listarCardapios'])->name('cardapio.listarCardapios');
+    Route::post('cardapio', [CardapioController::class, 'store'])->name('cardapio.cadastro');
 });
 
 require __DIR__.'/auth.php';

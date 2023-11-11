@@ -33,6 +33,7 @@
         <!--CONTEÚDO-->
 
         <section class="items">
+           
             @foreach($cardapios as $cardapio)
             <div class="item row card-panel hoverable">
                 <div class="col s12 m6 l5">
@@ -49,7 +50,7 @@
                 </div>
             </div>
 
-            <hr>
+           
             @endforeach
         </section>
     </section>

@@ -14,4 +14,17 @@ class CardapioController extends Controller
 
         return view('cardapio.listarCardapios', ['cardapios' => $cardapios]);
     }
+
+    public function store(Request $request){
+        //dd(file_get_contents($request['foto']->path()));
+        // $dados =  $request->all();
+        // $dados['foto'] = file_get_contents($dados['foto']->path());
+        // dd($dados['foto']);
+
+        if ($request->hasFile('imagem')) {
+        Cardapio::create($request->all());
+
+        return redirect('/cardapio')->with(['sucesso'=> 'Cardapio cadastrado com sucesso!']);
+        }
+    }   
 }
