@@ -1,6 +1,6 @@
 <!-- resources/views/cardapio/formCadastrar.blade.php -->
 
-<form method="POST" action="/cardapio">
+<form method="POST" action="{{ route('cardapio.store')}}" enctype="multipart/form-data">
     @csrf
 
     <label for="foto">Foto:</label>
@@ -10,9 +10,9 @@
     <label for="nome">Nome:</label>
     <input type="text" name="nome" id="nome" required>
 
-    <label for="acompanhamentos">Acompanhamentos:</label>
-    <input name="acompanhamentos" id="acompanhamentos" required>
+    <label for="acompanhamento">Acompanhamentos:</label>
+    <input type="text "name="acompanhamento" id="acompanhamento" required>
 
     <!-- Botão para submeter o formulário -->
-    <button type="submit" class="waves-effect waves-green btn">Cadastrar</button>
+    <button class="waves-effect waves-green btn">Cadastrar</button>
 </form>

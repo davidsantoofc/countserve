@@ -21,10 +21,25 @@ class CardapioController extends Controller
         // $dados['foto'] = file_get_contents($dados['foto']->path());
         // dd($dados['foto']);
 
-        if ($request->hasFile('imagem')) {
-        Cardapio::create($request->all());
+        if ($request->hasFile('foto')) {
+            $dados = $request->all();
+            $dados['foto'] = file_get_contents($request->file('foto')->path());
 
+            try {
+                Cardapio::create($dados);
+            } catch (\Exception $e) {
+                dd($e->getMessage()); // Exibe a mensagem de erro do banco de dados
+            }
         return redirect('/cardapio')->with(['sucesso'=> 'Cardapio cadastrado com sucesso!']);
         }
-    }   
+    }
+
+    public function destroy($id){
+        $cardapio = Cardapio::find($id);
+        $cardapio->delete();
+
+        $cardapios = Cardapio::all();
+
+        return redirect('/cardapio')->with('sucesso', '');
+    }
 }

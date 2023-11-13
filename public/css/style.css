@@ -14,7 +14,7 @@
 }
 
 /* Estilo para o modal */
-#modal1 {
+#modalCastrar, #modalExcluir {
     display: none;
     position: fixed;
     top: 50%;
