@@ -42,4 +42,39 @@ class CardapioController extends Controller
 
         return redirect('/cardapio')->with('sucesso', '');
     }
+
+    public function update(Request $request, $id){
+    $cardapio = Cardapio::find($id);
+
+        if(!isset($request->foto)) {
+            $data = [
+                'nome' => $request->nome,
+                'acompanhamento' => $request->acompanhamento,
+                'foto' => $cardapio->foto, 
+            ];
+            Cardapio::where('id', $id)->update($data);
+            return redirect('/cardapio')->with('sucesso', "Cardapio alterada com sucesso");
+
+        } else {
+
+            if ($request->hasFile('foto')) {
+                $dado = $request->all();
+                $dado['foto'] = file_get_contents($request->file('foto')->path());
+
+
+                    $data = [
+                        'nome' => $request->nome,
+                        'acompanhamento' => $request->acompanhamento,
+                        'foto' => $dado['foto'], 
+                    ];
+                    Cardapio::where('id', $id)->update($data);
+                    return redirect('/cardapio')->with('sucesso', "Cardapio alterada com sucesso");
+                    
+            }
+        }
+        
+
+    }
+
+        
 }

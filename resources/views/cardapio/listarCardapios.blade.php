@@ -5,32 +5,27 @@
                 {{ __('Cardapio') }}
             </h2>
             <div class="col s6 center-align">
-                <button class="waves-effect waves-light btn modal-trigger" onclick="abrirModalCadastrar()">
+                <a class="waves-effect waves-light btn modal-trigger"  href="#modalCadastrar">
                     <i class="material-symbols-outlined left">
                         menu_book
                     </i>
                     Cadastrar Cardápio
-                </button>
+                </a>
             </div>
         </div>
     </x-slot>
+
     <section class="container">
-
-        <!-- Overlay (fundo escuro) -->
-        <div id="overlay"></div>
-
         <!-- Modal Cadastrar -->
+    
         <div id="modalCadastrar" class="modal">
             <div class="modal-content">
                 @include('cardapio.formCadastrar')
             </div>
             <div class="modal-footer">
-                <a onclick="" class="waves-effect waves-green btn">Cadastrar</a>
                 <a onclick="fecharModalCadastrar()" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
             </div>
         </div>
-
-
 
         <!--CONTEÚDO-->
 
@@ -47,66 +42,55 @@
                         <p class="col s12 left-align">{{ $cardapio['acompanhamento'] }}</p>
                         <div class="row s12 left-align">
 
-                            <button class="col s2 left-align waves-effect waves-light btn" width="50px">
+                            <a class="col s2 left-align waves-effect waves-light btn modal-trigger" width="50px" href="#modalEditar{{$cardapio['id']}}">
                                 <i class="material-symbols-outlined left">
                                     edit
                                 </i>
                                     Editar
-                            </button>
-                                <button class="col s2 left-align waves-effect waves-light btn" width="50px" onclick="abrirModalExcluir()">
+                            </a>
+                            <a class="col s2 left-align waves-effect waves-light btn modal-trigger" width="50px" href="#modalExcluir{{$cardapio['id']}}">
                                 <i class="material-symbols-outlined left">
                                     delete
                                 </i>
                                     Excluir
-                                </button>
+                            </a>
                             </form>
                         </div>
 
                     </div>
                 </div>
-            </div>
 
-            <!-- Modal Excluir-->
-            <div id="modalExcluir" class="modal">
-                <div class="modal-content">
-                    <form action="{{ route('cardapio.destroy', ['id' => $cardapio['id']]) }}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <h2>Tem certeza que deseja excluir o cardapio <span class="green-text">{{ $cardapio['nome']}}</span> ?</h2>
-                        <div class="modal-footer">
-                            <button class="waves-effect waves-green btn">Excluir</button>
-                            <a onclick="fecharModalExcluir()" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
-                        </div>
-                    </form>
+                <!-- Modal Excluir-->
+                <div id="modalExcluir{{$cardapio['id']}}" class="modal">
+                    <div class="modal-content">
+                        <form action="{{ route('cardapio.destroy', ['id' => $cardapio['id']]) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <h2>Tem certeza que deseja excluir o cardapio <span class="green-text">{{ $cardapio['nome']}}</span> ?</h2>
+                            <div class="modal-footer">
+                                <button class="waves-effect waves-green btn">Excluir</button>
+                                <a onclick="fecharModalExcluir()" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
+                            </div>
+                        </form>
+                    </div>
                 </div>
+
+                <div id="modalEditar{{$cardapio['id']}}" class="modal">
+                    <div class="modal-content">
+                        @include('cardapio.formEditar')
+                    </div>
+                    <div class="modal-footer">
+                        <a onclick="fecharModalCadastrar()" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
+                    </div>
+                </div>
+                
             </div>
 
             @endforeach
         </section>
     </section>
 
-    <script>
-        function abrirModalCadastrar(){
-            document.getElementById("modalCadastrar").style.display = "block";
-            document.getElementById("overlay").style.display = "block";
-        }
-
-        function abrirModalExcluir(){
-            document.getElementById("modalExcluir").style.display = "block";
-            document.getElementById("overlay").style.display = "block";
-        }
-
-        function fecharModalCadastrar(){
-            document.getElementById("modalCadastrar").style.display = "none";
-            document.getElementById("overlay").style.display = "none";
-        }
-
-        function fecharModalExcluir(){
-            document.getElementById("modalExcluir").style.display = "none";
-            document.getElementById("overlay").style.display = "none";
-        }
-    </script>
-
-    <script src="js/materialize.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>M.AutoInit();</script>
 
 </x-app-layout>
