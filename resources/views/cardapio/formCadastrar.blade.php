@@ -2,7 +2,7 @@
 
 <form method="POST" action="{{ route('cardapio.store')}}" enctype="multipart/form-data">
     @csrf
-
+    @method('POST')
     <div class="row">
         <!-- Campos do formulário vão aqui -->
         <div class="row">
@@ -16,6 +16,13 @@
             <div class="input-field col s12">
                 <label for="acompanhamento">Acompanhamentos:</label>
                 <input type="text" name="acompanhamento" id="acompanhamento" required>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s12">
+                <label for="data">Acompanhamentos:</label>
+                <input type="date" name="data" id="data" required>
             </div>
         </div>
         

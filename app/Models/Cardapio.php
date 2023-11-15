@@ -10,7 +10,7 @@ class Cardapio extends Model
     use HasFactory;
 
     protected $table = 'cardapio';
-    protected $fillable = ['id','foto','acompanhamento', 'nome'];
+    protected $fillable = ['id','foto','acompanhamento', 'nome', 'data'];
     protected $primaryKey = 'id';
     public $incrementing = true;
     public $timestamps = false;

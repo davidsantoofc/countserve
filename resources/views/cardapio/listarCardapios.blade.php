@@ -40,6 +40,7 @@
                     <div class="row">
                         <h4 class="left-align col s12">{{ $cardapio['nome'] }}</h4>
                         <p class="col s12 left-align">{{ $cardapio['acompanhamento'] }}</p>
+                        <p class="col s12 left-align">{{date_format(date_create($cardapio['data']),"d/m/Y")}}</p>
                         <div class="row s12 left-align">
 
                             <a class="col s2 left-align waves-effect waves-light btn modal-trigger" width="50px" href="#modalEditar{{$cardapio['id']}}">
