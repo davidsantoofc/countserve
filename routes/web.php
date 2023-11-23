@@ -33,6 +33,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/cadastrar-cardapio', [CardapioController::class, 'store'])->name('cardapio.store');
     Route::delete('/excluir-cardapio/{id}', [CardapioController::class, 'destroy'])->name('cardapio.destroy');
     Route::post('/atualizar-cardapio/{id}', [CardapioController::class, 'update'])->name('cardapio.update');
+    Route::get('/cardapio-aluno', [CardapioController::class, 'cardapioAluno'])->name('cardapio.cardapioAluno');
 });
 
 require __DIR__.'/auth.php';

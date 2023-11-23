@@ -50,7 +50,7 @@ class CardapioController extends Controller
             $data = [
                 'nome' => $request->nome,
                 'acompanhamento' => $request->acompanhamento,
-                'foto' => $cardapio->foto, 
+                'foto' => $cardapio->foto,
             ];
             Cardapio::where('id', $id)->update($data);
             return redirect('/cardapio')->with('sucesso', "Cardapio alterada com sucesso");
@@ -65,16 +65,20 @@ class CardapioController extends Controller
                     $data = [
                         'nome' => $request->nome,
                         'acompanhamento' => $request->acompanhamento,
-                        'foto' => $dado['foto'], 
+                        'foto' => $dado['foto'],
                     ];
                     Cardapio::where('id', $id)->update($data);
                     return redirect('/cardapio')->with('sucesso', "Cardapio alterada com sucesso");
-                    
             }
         }
-        
-
     }
 
-        
+    public function cardapioAluno(): View
+    {
+        $cardapios = Cardapio::all();
+
+        return view('cardapio.cardapioAluno', ['cardapios' => $cardapios]);
+    }
+
+
 }
