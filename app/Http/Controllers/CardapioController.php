@@ -92,31 +92,29 @@ class CardapioController extends Controller
                 foreach($agendamentos as $key => $agendamento){
                     if($key!="_token"){
                         $ag = new Agenda();
-                        
+
                         Agenda::create(["cardapio_id"=>$key,
                         "pessoa_id" => Auth::User()->pessoa->id,
                         "status" => $agendamento]);
-
-                        return redirect('/cardapio-aluno')->with('Sucesso', "Refeição confirmada com sucesso");
                     }
-
                 }
+                return redirect('/dashboard')->with('sucesso', "Refeição confirmada com sucesso");
             } catch (\Exception $e) {
-                dd($e->getMessage()); // Exibe a mensagem de erro do banco de dados
+                //dd($e->getMessage()); // Exibe a mensagem de erro do banco de dados
+                return redirect('/dashboard')->with('error', "Não foi possível ou você já confirmou suas refeições anteriormente!");
             }
         }
-        return redirect('/cardapio-aluno')->with('error', "Não foi possível confirmar suas refeições");
     }
 
     public function agendamentos(Request $request): View
-    {   
+    {
         $dt = date('Y-m-d');
         if(isset($request['data'])){
             $dt = $request['data'];
         }
 
         //CRIANDO A DATA DE HOJE
-        
+
         $c = self::getConfirmados($dt);
         $cardapio = Cardapio::where('data',$dt)->first();
         return view('cardapio.agendamentos',['cardapio'=>$cardapio, 'confirmados'=>$c, 'data'=>$dt]);
@@ -126,7 +124,7 @@ class CardapioController extends Controller
         //$dt = explode('-', $data);
         //dd($dt);
 
-        $sql = "Select count(*) as conf from cardapio as c join agenda a 
+        $sql = "Select count(*) as conf from cardapio as c join agenda a
         on c.id = a.cardapio_id where data='".$data."' and status='confirmado';";
         $confirmados = \DB::select($sql);
         return $confirmados[0]->conf;

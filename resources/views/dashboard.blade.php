@@ -14,27 +14,28 @@
                     <div class="row"></div>
                     @php
 
-                        $cardapiosCadastrados = \App\Models\Cardapio::all();
+                        $cardapiosCadastrados = App\Models\Cardapio::all();
 
-                        $refeicoesConfirmadas = Auth::User()->pessoa->agenda->cardapio;
+                        $refeicoesConfirmadas = Auth::User()->pessoa->agenda;
 
-                        dd($refeicoesConfirmadas)
                         $perfil = Auth::user()->pessoa->perfil;
 
                     @endphp
 
                         @switch($perfil)
                             @case ('administrador')
-                                <h1>Refeições Cadastradas</h1>
+                                <h5>Refeições Cadastradas</h5>
                                 <div class="carousel">
                                 @foreach ($cardapiosCadastrados as $cardapio)
                                     <a class="carousel-item" href="#"><img src="{{ $cardapio->getImageForImg() }}"></a>
                                 @endforeach
                                 </div>
-                                <h1>Refeições Confirmadas</h1>
+                                <h5>Refeições Confirmadas</h5>
                                 <div class="carousel">
-                                @foreach ($refeicoesConfirmadas as $refeicoes)
-                                    <a class="carousel-item" href="#one!"><img src="{{ $refeicoes->getImageForImg() }}"></a>
+                                @foreach ($refeicoesConfirmadas as $agenda)
+                                    @foreach ($agenda->cardapio as $cardapio)
+                                    <a class="carousel-item" href="#one!"><img src="{{ $cardapio->getImageForImg() }}"></a>
+                                    @endforeach
                                 @endforeach
                                 </div>
                             @break
@@ -42,8 +43,10 @@
                             @case('professor')
                                 <h1>Refeições Confirmadas</h1>
                                 <div class="carousel">
-                                @foreach ($refeicoesConfirmadas as $refeicoes)
-                                    <a class="carousel-item" href="#one!"><img src="{{ $refeicoes->getImageForImg() }}"></a>
+                                @foreach ($refeicoesConfirmadas as $agenda)
+                                    @foreach ($agenda->cardapio as $cardapio)
+                                    <a class="carousel-item" href="#one!"><img src="{{ $cardapio->getImageForImg() }}"></a>
+                                    @endforeach
                                 @endforeach
                                 </div>
                             @break

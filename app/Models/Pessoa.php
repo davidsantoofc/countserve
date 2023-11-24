@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Agenda;
 
 class Pessoa extends Model
 {
@@ -20,7 +21,7 @@ class Pessoa extends Model
     }
 
     public function agenda(){
-        return this->hasMany(Agenda::class, 'pessoa_id','id');
+        return $this->hasMany(Agenda::class, 'pessoa_id','id');
     }
 
 }

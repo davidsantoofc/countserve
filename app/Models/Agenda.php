@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Pessoa;
+use App\Models\Cardapio;
 
 class Agenda extends Model
 {
@@ -22,6 +24,6 @@ class Agenda extends Model
     }
 
     public function cardapio(){
-        return $this->hasMany(Cardapio::class, 'cardapio_id', 'id');
+        return $this->hasMany(Cardapio::class, 'id', 'cardapio_id');
     }
 }
