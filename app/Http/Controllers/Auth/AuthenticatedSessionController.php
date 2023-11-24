@@ -28,22 +28,22 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
         $request->session()->regenerate();
 
-        $user = Auth::user();
+        // $user = Auth::user();
 
-        $perfil = $user->pessoa->perfil;
+        // $perfil = $user->pessoa->perfil;
 
-        switch ($perfil) {
-            case 'administrador':
-                return redirect('/cardapio');
+        // switch ($perfil) {
+        //     case 'administrador':
+        //         return redirect('/cardapio');
 
-            case 'professor':
-            case 'aluno':
-                return redirect('/cardapio-aluno');
+        //     case 'professor':
+        //     case 'aluno':
+        //         return redirect('/cardapio-aluno');
 
-            default:
-                return redirect('/');
-        }
-        // return redirect()->intended(RouteServiceProvider::HOME);
+        //     default:
+        //         return redirect('/');
+        // }
+        return redirect()->intended(RouteServiceProvider::HOME);
     }
 
     /**

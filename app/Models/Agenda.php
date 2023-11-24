@@ -17,4 +17,11 @@ class Agenda extends Model
 
     public $timestamps = false;
 
+    public function pessoa(){
+        return $this->belongsTo(Pessoa::class , 'pessoa_id', 'id');
+    }
+
+    public function cardapio(){
+        return $this->hasMany(Cardapio::class, 'cardapio_id', 'id');
+    }
 }

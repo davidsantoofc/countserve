@@ -13,39 +13,44 @@
                     </x-flash-message>
                     <div class="row"></div>
                     @php
+
+                        $cardapiosCadastrados = \App\Models\Cardapio::all();
+
+                        $refeicoesConfirmadas = Auth::User()->pessoa->agenda->cardapio;
+
+                        dd($refeicoesConfirmadas)
                         $perfil = Auth::user()->pessoa->perfil;
 
-                        switch ($perfil) {
-                            case 'administrador':
-                                echo '
-                                <h1>Refeições Cadastradas</h1>
-                                <div class="carousel">
-                                    <a class="carousel-item" href="#one!"><img src="img/background1.png"></a>
-                                    <a class="carousel-item" href="#two!"><img src="img/bannerHome.jpg"></a>
-                                    <a class="carousel-item" href="#three!"><img src="https://lorempixel.com/250/250/nature/3"></a>
-                                    <a class="carousel-item" href="#four!"><img src="https://lorempixel.com/250/250/nature/4"></a>
-                                    <a class="carousel-item" href="#five!"><img src="https://lorempixel.com/250/250/nature/5"></a>
-                                </div>';
-                                break;
-                            case 'aluno':
-                            case 'professor':
-                                echo '
-                                <h1>Refeições Confirmadas</h1>
-                                <div class="carousel">
-                                    <a class="carousel-item" href="#one!"><img src="img/background1.png"></a>
-                                    <a class="carousel-item" href="#two!"><img src="img/bannerHome.jpg"></a>
-                                    <a class="carousel-item" href="#three!"><img src="https://lorempixel.com/250/250/nature/3"></a>
-                                    <a class="carousel-item" href="#four!"><img src="https://lorempixel.com/250/250/nature/4"></a>
-                                    <a class="carousel-item" href="#five!"><img src="https://lorempixel.com/250/250/nature/5"></a>
-                                </div>';
-                            break;
-                        }
                     @endphp
 
+                        @switch($perfil)
+                            @case ('administrador')
+                                <h1>Refeições Cadastradas</h1>
+                                <div class="carousel">
+                                @foreach ($cardapiosCadastrados as $cardapio)
+                                    <a class="carousel-item" href="#"><img src="{{ $cardapio->getImageForImg() }}"></a>
+                                @endforeach
+                                </div>
+                                <h1>Refeições Confirmadas</h1>
+                                <div class="carousel">
+                                @foreach ($refeicoesConfirmadas as $refeicoes)
+                                    <a class="carousel-item" href="#one!"><img src="{{ $refeicoes->getImageForImg() }}"></a>
+                                @endforeach
+                                </div>
+                            @break
+                            @case('aluno')
+                            @case('professor')
+                                <h1>Refeições Confirmadas</h1>
+                                <div class="carousel">
+                                @foreach ($refeicoesConfirmadas as $refeicoes)
+                                    <a class="carousel-item" href="#one!"><img src="{{ $refeicoes->getImageForImg() }}"></a>
+                                @endforeach
+                                </div>
+                            @break
+                        @endswitch
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
 </x-app-layout>

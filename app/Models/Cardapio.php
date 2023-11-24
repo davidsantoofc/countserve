@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Cardapio extends Model
 {
@@ -19,6 +20,10 @@ class Cardapio extends Model
         // var_dump($this->fillable);
         return "data:image/jpg;base64," .  base64_encode($this->foto) ;
 
+    }
+
+    public function agenda(){
+        return $this->belongsTo(Agenda::class, 'cardapio_id', 'id');
     }
 
 }

@@ -18,4 +18,9 @@ class Pessoa extends Model
     public function user(){
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
+
+    public function agenda(){
+        return this->hasMany(Agenda::class, 'pessoa_id','id');
+    }
+
 }
