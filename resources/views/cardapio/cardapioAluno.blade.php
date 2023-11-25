@@ -9,7 +9,9 @@
 
     <section class="container">
         <section class="items">
-
+        <form name="lista" action="{{route('cardapio.agendarCardapio')}}" method="post">
+            @csrf
+            
             @foreach($cardapios as $cardapio)
             <div class="item row card-panel hoverable">
                 <div class="col s12 m6 l5">
@@ -21,52 +23,38 @@
                         <p class="col s12 left-align">{{ $cardapio['acompanhamento'] }}</p>
                         <p class="col s12 left-align">{{date_format(date_create($cardapio['data']),"d/m/Y")}}</p>
                         <div class="row s12 left-align">
-                            <form action="#">
-                                <input type="hidden" value="{{ $cardapio['id'] }}">
+                            
+                                
                                 <p>
                                     <label>
-                                        <input name="status" type="radio"/>
+                                        <input name="{{$cardapio['id']}}" type="radio" value="confirmado"/>
                                         <span>Confirmar</span>
                                     </label>
                                 </p>
                                 <p>
                                     <label>
-                                        <input name="status" type="radio"/>
+                                        <input name="{{$cardapio['id']}}" type="radio" value="cancelado"/>
                                         <span>Cancelar</span>
                                     </label>
                                 </p>
-                                <a class="waves-effect waves-light btn-small">
-                                    <i class="material-symbols-outlined left">
-                                        send
-                                    </i>
-                                    Enviar
-                                </a>
-                            </form>
+                                
+                            
                         </div>
-
                     </div>
                 </div>
-
-                <!-- Modal Excluir-->
-                <div id="modalExcluir{{$cardapio['id']}}" class="modal">
-                    <div class="modal-content">
-                        <form action="{{ route('cardapio.destroy', ['id' => $cardapio['id']]) }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <h2>Tem certeza que deseja confirmar o cardapio <span class="green-text">{{ $cardapio['nome']}}</span> ?</h2>
-                            <div class="modal-footer">
-                                <button class="waves-effect waves-green btn">Excluir</button>
-                                <a onclick="fecharModalExcluir()" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-
             </div>
-
             @endforeach
+            <button type="submit" class="waves-effect waves-light btn-small">
+                <i class="material-symbols-outlined left">
+                    send
+                </i>
+                Enviar
+            </button>
+            </form>
         </section>
     </section>
+
+    
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script>M.AutoInit();</script>

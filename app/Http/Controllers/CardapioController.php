@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use App\Models\Cardapio;
+use App\Models\Agenda;
 
 class CardapioController extends Controller
 {
@@ -80,5 +81,28 @@ class CardapioController extends Controller
         return view('cardapio.cardapioAluno', ['cardapios' => $cardapios]);
     }
 
+    public function agendarCardapio(Request $request){
+        
+        $agendamentos = $request->input();
+        dd($agendamentos);
+        if (is_array($agendamentos)){
+            try {   
+                foreach($agendamentos as $key => $agendamento){
+                    if($key!="_token"){
+                        $ag = new Agenda();
+                        $ag->cardapio_id = $key;
+                        $ag->pessoa_id = Auth->pessoa_id;
+                        $ag->status = $agendamento;
+                        Agenda::create($ag);
+                    }
+                    
+                }
+            } catch (\Exception $e) {
+                dd($e->getMessage()); // Exibe a mensagem de erro do banco de dados
+            }
+
+        }
+
+    }
 
 }
