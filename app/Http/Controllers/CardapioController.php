@@ -77,16 +77,15 @@ class CardapioController extends Controller
     public function cardapioAluno(): View
     {
         $cardapios = Cardapio::all();
-
         return view('cardapio.cardapioAluno', ['cardapios' => $cardapios]);
     }
 
     public function agendarCardapio(Request $request){
-        
+
         $agendamentos = $request->input();
         dd($agendamentos);
         if (is_array($agendamentos)){
-            try {   
+            try {
                 foreach($agendamentos as $key => $agendamento){
                     if($key!="_token"){
                         $ag = new Agenda();
@@ -95,7 +94,7 @@ class CardapioController extends Controller
                         $ag->status = $agendamento;
                         Agenda::create($ag);
                     }
-                    
+
                 }
             } catch (\Exception $e) {
                 dd($e->getMessage()); // Exibe a mensagem de erro do banco de dados

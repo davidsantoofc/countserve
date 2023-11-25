@@ -11,7 +11,7 @@
         <section class="items">
         <form name="lista" action="{{route('cardapio.agendarCardapio')}}" method="post">
             @csrf
-            
+
             @foreach($cardapios as $cardapio)
             <div class="item row card-panel hoverable">
                 <div class="col s12 m6 l5">
@@ -23,8 +23,8 @@
                         <p class="col s12 left-align">{{ $cardapio['acompanhamento'] }}</p>
                         <p class="col s12 left-align">{{date_format(date_create($cardapio['data']),"d/m/Y")}}</p>
                         <div class="row s12 left-align">
-                            
-                                
+
+
                                 <p>
                                     <label>
                                         <input name="{{$cardapio['id']}}" type="radio" value="confirmado"/>
@@ -37,8 +37,8 @@
                                         <span>Cancelar</span>
                                     </label>
                                 </p>
-                                
-                            
+
+
                         </div>
                     </div>
                 </div>
@@ -53,8 +53,6 @@
             </form>
         </section>
     </section>
-
-    
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script>M.AutoInit();</script>

@@ -22,7 +22,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        
+
     ];
 
     /**
@@ -46,6 +46,6 @@ class User extends Authenticatable
     ];
 
     public function pessoa(){
-        Pessoa::where('user_id',$this->id);
+        return $this->hasOne(Pessoa::class, 'user_id', 'id');
     }
 }
