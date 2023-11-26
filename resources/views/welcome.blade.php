@@ -27,7 +27,7 @@
 
         <nav class="white" role="navigation">
             <div class="nav-wrapper container">
-                <a id="logo-container" href="#" class="brand-logo"><img src="img/countServeLogo.jpeg" width="65px" alt="" srcset=""></a>
+                <a id="logo-container" href="#" class="brand-logo"><img src="img/countServeLogo.png" width="65px" alt="" srcset=""></a>
                 @if (Route::has('login'))
                 <ul class="right hide-on-med-and-down">
                     <li>
@@ -42,14 +42,15 @@
                             Login in
                         </a>
                     </li>
-                    <li>
+                    <!-- <li>
                         @if (Route::has('register'))
                         <a href="{{ route('register') }}" class="black-text">
                             Register
                         </a>
                         @endif
-                        @endauth
-                    </li>
+
+                    </li> -->
+                    @endauth
                 @endif
                 </ul>
 
@@ -67,14 +68,15 @@
                         Login in
                     </a>
                 </li>
-                <li>
+                <!-- <li>
                     @if (Route::has('register'))
                     <a href="{{ route('register') }}">
                         Register
                     </a>
                     @endif
-                    @endauth
-                </li>
+
+                </li> -->
+                @endauth
                 @endif
             </ul>
             <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>

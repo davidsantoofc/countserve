@@ -13,6 +13,17 @@
             @csrf
 
             @foreach($cardapios as $cardapio)
+                @php
+                    // Configurando a localidade para português
+                    setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
+                    \Carbon\Carbon::setUtf8(true);
+
+                    $dataCardapio = date_create($cardapio['data']);
+                    $dataAtual = \Carbon\Carbon::today();
+
+                @endphp
+
+            @if ($dataCardapio > $dataAtual)
             <div class="item row card-panel hoverable">
                 <div class="col s12 m6 l5">
                     <img class="responsive-img" width="300px" src="{{ $cardapio->getImageForImg() }}">
@@ -22,6 +33,7 @@
                         <h4 class="left-align col s12">{{ $cardapio['nome'] }}</h4>
                         <p class="col s12 left-align">{{ $cardapio['acompanhamento'] }}</p>
                         <p class="col s12 left-align">{{date_format(date_create($cardapio['data']),"d/m/Y")}}</p>
+                        <p class="col s12 left-align green-text">{{ strftime('%A', strtotime($cardapio['data'])) }}</p>
                         <div class="row s12 left-align">
 
 
@@ -43,6 +55,7 @@
                     </div>
                 </div>
             </div>
+            @endif
             @endforeach
             <button type="submit" class="waves-effect waves-light btn-small">
                 <i class="material-symbols-outlined left">

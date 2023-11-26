@@ -17,7 +17,7 @@
 
     <section class="container">
         <!-- Modal Cadastrar -->
-    
+
         <div id="modalCadastrar" class="modal">
             <div class="modal-content">
                 @include('cardapio.formCadastrar')
@@ -84,7 +84,7 @@
                         <a onclick="fecharModalCadastrar()" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
                     </div>
                 </div>
-                
+
             </div>
 
             @endforeach

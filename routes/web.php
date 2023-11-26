@@ -38,4 +38,6 @@ Route::middleware('auth')->group(function () {
     Route::post('/agendar-cardapio', [CardapioController::class, 'agendarCardapio'])->name('cardapio.agendarCardapio');
 });
 
+    Route::get('/agendamentos', [CardapioController::class, 'agendamentos'])->name('cardapio.agendamentos');
+
 require __DIR__.'/auth.php';

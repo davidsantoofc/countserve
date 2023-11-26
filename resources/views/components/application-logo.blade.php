@@ -1,1 +1,1 @@
-<img src="img/countServeLogo.jpeg" width="80px" alt="">
+<img src="img/countServeLogo.png" width="80px" alt="">

@@ -104,4 +104,9 @@ class CardapioController extends Controller
 
     }
 
+    public function agendamentos(): View
+    {
+        return view('cardapio.agendamentos');
+    }
+
 }
