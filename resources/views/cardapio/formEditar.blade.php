@@ -21,6 +21,13 @@
         </div>
         
         <div class="row">
+            <div class="input-field col s12">
+                <label for="data">Data:</label>
+                <input type="date" name="data" id="data" value="{{ $cardapio->data }}" required>
+            </div>
+        </div>
+
+        <div class="row">
             
             <div class="col s6">
                 <label for="foto">Foto:</label>

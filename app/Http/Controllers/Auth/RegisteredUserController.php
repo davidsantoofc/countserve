@@ -38,7 +38,7 @@ class RegisteredUserController extends Controller
         //     'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:users'],
         //     'password' => ['required', 'confirmed', Rules\Password::defaults()],
         //     'dt_nasc' => ['required', 'date'],
-        //     'turm_num' => ['integer'],
+        //     'tur_num' => ['integer'],
         //     'perfil' => ['required', 'string'],
         // ]);
 
@@ -52,7 +52,7 @@ class RegisteredUserController extends Controller
         $pessoa = Pessoa::create([
             'nome' => $request->name,
             'dt_nasc' => $request->dt_nasc,
-            'turm_num' => $request->turm_num,
+            'tur_num' => $request->turm_num,
             'perfil' => $request->perfil,
             'user_id' => $user->id, // Certifique-se de ter uma coluna 'user_id' em sua tabela 'pessoas'
         ]);

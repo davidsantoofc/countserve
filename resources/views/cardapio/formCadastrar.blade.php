@@ -21,7 +21,7 @@
 
         <div class="row">
             <div class="input-field col s12">
-                <label for="data">Acompanhamentos:</label>
+                <label for="data">Data:</label>
                 <input type="date" name="data" id="data" required>
             </div>
         </div>
