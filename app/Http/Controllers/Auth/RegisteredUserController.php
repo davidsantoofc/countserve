@@ -60,6 +60,18 @@ class RegisteredUserController extends Controller
         event(new Registered($user));
 
         Auth::login($user);
-        return redirect(RouteServiceProvider::HOME);
+        $perfil = Auth::user()->pessoa->perfil;
+
+        switch ($perfil) {
+            case 'administrador':
+                return redirect('/cardapio');
+
+            case 'professor':
+            case 'aluno':
+                return redirect('/cardapio-aluno');
+
+            default:
+                return redirect('/');
+        }
     }
 }
