@@ -16,7 +16,8 @@
 
         <!-- Material Symbols -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-
+        <link rel="stylesheet" href="css/style.css">
+        
         <!-- Public CSS -->
         <link rel="stylesheet" href="css/style.css">
 
@@ -41,5 +42,44 @@
                 {{ $slot }}
             </main>
         </div>
+        <footer class="page-footer teal">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Técnicos desenvolvedores</h5>
+          <p class="grey-text text-lighten-4">Bruno Ramos, Bruno Torres, Caua Pimenta, David Santo, Jullia Mautoni, Juliene Campos e Vitor Magalhães</p>
+
+
+        </div>
+        <div class="col l6 s12 center">
+          <img  src="img/faetecLogo.png" width="300px" alt="" srcset="">
+        </div>
+
+        <!-- <div class="col l3 s12">
+          <h5 class="white-text">Settings</h5>
+          <ul>
+            <li><a class="white-text" href="#!">Link 1</a></li>
+            <li><a class="white-text" href="#!">Link 2</a></li>
+            <li><a class="white-text" href="#!">Link 3</a></li>
+            <li><a class="white-text" href="#!">Link 4</a></li>
+          </ul>
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Connect</h5>
+          <ul>
+            <li><a class="white-text" href="#!">Link 1</a></li>
+            <li><a class="white-text" href="#!">Link 2</a></li>
+            <li><a class="white-text" href="#!">Link 3</a></li>
+            <li><a class="white-text" href="#!">Link 4</a></li>
+          </ul>
+        </div> -->
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+        © 2023 Copyright FAETEC - ETE Amaury César Vieira <a class="brown-text text-lighten-3" href="http://materializecss.com"></a>
+      </div>
+    </div>
+  </footer>
     </body>
 </html>

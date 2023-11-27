@@ -32,7 +32,7 @@
 
                     @endphp
 
-                @if ($dataCardapio > $dataAtual)
+                @if ($dataCardapio >= $dataAtual)
                 <div class="item row card-panel hoverable">
                     <div class="col s12 m6 l5">
                         <img class="responsive-img" width="300px" src="{{ $cardapio->getImageForImg() }}">

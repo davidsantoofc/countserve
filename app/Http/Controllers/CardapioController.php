@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\View\View;
 use App\Models\Cardapio;
 use App\Models\Agenda;
+use Illuminate\Support\Facades\Auth;
 
 class CardapioController extends Controller
 {
@@ -85,16 +86,16 @@ class CardapioController extends Controller
     public function agendarCardapio(Request $request){
 
         $agendamentos = $request->input();
-        dd($agendamentos);
+        //dd($agendamentos);
         if (is_array($agendamentos)){
             try {
                 foreach($agendamentos as $key => $agendamento){
                     if($key!="_token"){
                         $ag = new Agenda();
-                        $ag->cardapio_id = $key;
-                        $ag->pessoa_id = Auth->pessoa_id;
-                        $ag->status = $agendamento;
-                        Agenda::create($ag);
+                        
+                        Agenda::create(["cardapio_id"=>$key,
+                        "pessoa_id" => Auth::User()->pessoa->id,
+                        "status" => $agendamento]);
                     }
 
                 }
@@ -106,9 +107,28 @@ class CardapioController extends Controller
 
     }
 
-    public function agendamentos(): View
-    {
-        return view('cardapio.agendamentos');
+    public function agendamentos(Request $request): View
+    {   
+        $dt = date('Y-m-d');
+        if(isset($request['data'])){
+            $dt = $request['data'];
+        }
+
+        //CRIANDO A DATA DE HOJE
+        
+        $c = self::getConfirmados($dt);
+        $cardapio = Cardapio::where('data',$dt)->first();
+        return view('cardapio.agendamentos',['cardapio'=>$cardapio, 'confirmados'=>$c, 'data'=>$dt]);
+    }
+
+    public function getConfirmados($data){
+        //$dt = explode('-', $data);
+        //dd($dt);
+
+        $sql = "Select count(*) as conf from cardapio as c join agenda a 
+        on c.id = a.cardapio_id where data='".$data."' and status='confirmado';";
+        $confirmados = \DB::select($sql);
+        return $confirmados[0]->conf;
     }
 
 }

@@ -18,7 +18,7 @@ use App\Http\Controllers\CardapioController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('inicio');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
