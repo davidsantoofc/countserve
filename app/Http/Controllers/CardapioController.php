@@ -42,7 +42,7 @@ class CardapioController extends Controller
 
         $cardapios = Cardapio::all();
 
-        return redirect('/cardapio')->with('sucesso', '');
+        return redirect('/cardapio')->with('sucesso', 'Cardapio removido com sucesso!');
     }
 
     public function update(Request $request, $id){
@@ -96,15 +96,16 @@ class CardapioController extends Controller
                         Agenda::create(["cardapio_id"=>$key,
                         "pessoa_id" => Auth::User()->pessoa->id,
                         "status" => $agendamento]);
+
+                        return redirect('/cardapio-aluno')->with('Sucesso', "Refeição confirmada com sucesso");
                     }
 
                 }
             } catch (\Exception $e) {
                 dd($e->getMessage()); // Exibe a mensagem de erro do banco de dados
             }
-
         }
-
+        return redirect('/cardapio-aluno')->with('error', "Não foi possível confirmar suas refeições");
     }
 
     public function agendamentos(Request $request): View

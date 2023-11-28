@@ -1,14 +1,5 @@
 <x-guest-layout>
-    <!-- @php
-        $perfil = Auth::check() ? Auth::user()->pessoa->perfil : null;
-    @endphp
-        @if ($perfil != 'administrador')
-            @php
-                Auth::guard('web')->logout();
-                abort(redirect('/login'));
-            @endphp
-        @else -->
-        <div class="row">
+   <div class="row">
             <form method="POST" action="{{ route('register') }}">
                 @csrf
                 <div class="row">
@@ -60,5 +51,4 @@
                 </div>
             </form>
         </div>
-        <!-- @endif -->
 </x-guest-layout>

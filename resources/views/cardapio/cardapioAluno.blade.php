@@ -17,6 +17,8 @@
         </x-slot>
 
         <section class="container">
+            <x-flash-message>
+            </x-flash-message>
             <section class="items">
             <form name="lista" action="{{route('cardapio.agendarCardapio')}}" method="post">
                 @csrf

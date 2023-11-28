@@ -1,6 +1,10 @@
 <nav x-data="{ open: false }" class="white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
     <!-- Primary Navigation Menu -->
 
+    @php
+        $perfil = Auth::User()->pessoa->perfil;
+    @endphp
+
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex">
@@ -11,18 +15,45 @@
                     </a>
                 </div>
 
-                <!-- Navigation Links
+                <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
                 </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('cardapio.listarCardapios')"> -->
-                    <!-- :active="request()->routeIs('cardapio')"> -->
-                        <!-- {{ __('Cardapio') }}
-                    </x-nav-link>
-                </div> -->
+                @switch($perfil)
+                    @case('administrador')
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-nav-link :href="route('cardapio.listarCardapios')"
+                            :active="request()->routeIs('cardapio')">
+                            {{ __('Cadastro de Cardapios') }}
+                        </x-nav-link>
+                    </div>
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-nav-link :href="route('cardapio.cardapioAluno')"
+                            :active="request()->routeIs('cardapio.cardapioAluno')">
+                            {{ __('Confirmar Cardapio') }}
+                        </x-nav-link>
+                    </div>
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-nav-link :href="route('cardapio.agendamentos')"
+                            :active="request()->routeIs('cardapio.agendamentos')">
+                            {{ __('Agendamentos') }}
+                        </x-nav-link>
+                    </div>
+                    @break
+ 
+                    @case('aluno')
+                    @case('professor')
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-nav-link :href="route('cardapio.cardapioAluno')"
+                            :active="request()->routeIs('cardapio.cardapioAluno')">
+                            {{ __('Confirmar Cardapio') }}
+                        </x-nav-link>
+                    </div>
+                    @break
+ 
+                @endswitch
             </div>
 
             <!-- Settings Dropdown -->
