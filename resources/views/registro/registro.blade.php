@@ -44,7 +44,7 @@
                 <label>Perfil</label>
                 </div>
                 <div class="row center-align">
-                    <button class="waves-effect waves-light btn" type="submit" name="action">
+                    <button class="waves-effect waves-light btn" name="action">
                         Cadastrar
                         <i class="material-icons left">send</i>
                     </button>

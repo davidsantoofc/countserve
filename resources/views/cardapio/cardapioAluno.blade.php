@@ -68,12 +68,14 @@
                 </div>
                 @endif
                 @endforeach
-                <button type="submit" class="waves-effect waves-light btn-small">
-                    <i class="material-symbols-outlined left">
-                        send
-                    </i>
-                    Enviar
-                </button>
+                <div class="row">
+                    <button class="waves-effect waves-light btn-small">
+                        <i class="material-symbols-outlined left">
+                            send
+                        </i>
+                        Enviar
+                    </button>
+                </div>
                 </form>
             </section>
         </section>
