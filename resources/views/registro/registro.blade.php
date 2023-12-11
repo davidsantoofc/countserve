@@ -69,7 +69,7 @@
                         </button>
                     </div>
                 </form>
-            </div>
+        </div>
     @endif
     </div>
 </x-app-layout>

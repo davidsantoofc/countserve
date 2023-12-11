@@ -88,7 +88,7 @@
     <div class="section no-pad-bot">
       <div class="container">
         <br><br>
-        <h1 class="header center black-text text-lighten-2" style="font-family: 'SEGOE UI'; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);">CountServe</h1>
+        <h1 class="header center light-green-text text-accent-1 tituloBanner" style="font-family: 'SEGOE UI'; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);">CountServe</h1>
         <div class="row center">
           <!-- <h5 class="header col s12 light">Otimização de Serviços Alimentares</h5> -->
         </div>
@@ -99,8 +99,7 @@
 
       </div>
     </div>
-    <div class="parallax">
-        <img src="img/bannerHome.jpg" alt="Unsplashed background img 1" style="filter: blur(3px);">
+    <div class="parallax banner1">
     </div>
   </div>
 
@@ -135,7 +134,7 @@
             <h2 class="center brown-text"><i class="medium material-symbols-outlined">terminal</i></h2>
             <h5 class="center">Solução</h5>
 
-            <p class="light"> Nossa aplicação oferece uma solução simples e eficaz que realiza uma contagem precisa de pessoas, possibilitando aos profissionais da área preparar a quantidade certa de refeições, diminuindo perdas e reduzindo custos.</p>
+            <p class="light">Nossa aplicação oferece uma solução simples e eficaz que realiza uma contagem precisa de pessoas, possibilitando aos profissionais da área preparar a quantidade certa de refeições, diminuindo perdas e reduzindo custos.</p>
           </div>
         </div>
       </div>
@@ -148,11 +147,12 @@
     <div class="section no-pad-bot">
       <div class="container">
         <div class="row center">
-          <h5 class="header col s12 light" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);">“Desperdício de quem tem é a fome de alguém... Consuma o suficiente! ” - Filipe Inácio Matias</h5>
+          <h5 class="header col s12 light" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);">“Desperdício de quem tem é a fome de alguém... Consuma o suficiente! ”<br>- Filipe Inácio Matias</h5>
         </div>
       </div>
     </div>
-    <div class="parallax"><img src="img/background1.png" alt="Unsplashed background img 2" style="filter: blur(3px);"></div>
+    <div class="parallax banner2"></div>
+
   </div>
 
   <!-- <div class="container">
