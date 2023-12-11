@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<!-- <html lang="{{ str_replace('_', '-', app()->getLocale()) }}"> -->
+<html lang="pt-br">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,7 +18,7 @@
         <!-- Material Symbols -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
         <link rel="stylesheet" href="css/style.css">
-        
+
         <!-- Public CSS -->
         <link rel="stylesheet" href="css/style.css">
 
@@ -84,6 +85,6 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <script>M.AutoInit();</script>
-  
+
     </body>
 </html>

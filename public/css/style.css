@@ -33,6 +33,12 @@ p {
   margin-top: 15px;
 }
 
+#formRegistro {
+    margin-top: 15px;
+    border-radius: 10px;
+
+}
+
 
 @media only screen and (max-width : 992px) {
   .parallax-container .section {
@@ -60,3 +66,5 @@ p {
 footer.page-footer {
   margin: 0;
 }
+
+

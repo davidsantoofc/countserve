@@ -59,19 +59,19 @@ class RegisteredUserController extends Controller
 
         event(new Registered($user));
 
-        Auth::login($user);
-        $perfil = Auth::user()->pessoa->perfil;
+        return redirect('/dashboard');
+        // $perfil = Auth::user()->pessoa->perfil;
 
-        switch ($perfil) {
-            case 'administrador':
-                return redirect('/cardapio');
+        // switch ($perfil) {
+        //     case 'administrador':
+        //         return redirect('/cardapio');
 
-            case 'professor':
-            case 'aluno':
-                return redirect('/cardapio-aluno');
+        //     case 'professor':
+        //     case 'aluno':
+        //         return redirect('/cardapio-aluno');
 
-            default:
-                return redirect('/');
-        }
+        //     default:
+        //         return redirect('/');
+        // }
     }
 }
