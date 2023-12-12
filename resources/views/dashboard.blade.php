@@ -15,6 +15,7 @@
                     @php
 
                         $cardapiosCadastrados = App\Models\Cardapio::all();
+                        $users = App\Models\User::paginate(6);
 
                         $refeicoesConfirmadas = Auth::User()->pessoa->agenda;
 
@@ -25,19 +26,62 @@
                         @switch($perfil)
                             @case ('administrador')
                                 <h5>Refeições Cadastradas</h5>
-                                <div class="carousel">
-                                @foreach ($cardapiosCadastrados as $cardapio)
-                                    <a class="carousel-item" href="#"><img src="{{ $cardapio->getImageForImg() }}"></a>
-                                @endforeach
+                                <div class="row">
+                                    <div class="col s6">
+                                        <div class="carousel">
+                                            @foreach ($cardapiosCadastrados as $cardapio)
+                                                <a class="carousel-item" href="#"><img src="{{ $cardapio->getImageForImg() }}"></a>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                    <div class="col s6">
+                                        <table>
+                                            <thead>
+                                            <tr>
+                                                <th>Nome</th>
+                                                <th>Email</th>
+                                                <th>Perfil</th>
+                                                <th>Agendamentos</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            @foreach ($users as $usuario)
+                                            <tr>
+                                                <td>{{ $usuario->name }}</td>
+                                                <td>{{ $usuario->email }}</td>
+                                                @if ($usuario->pessoa)
+                                                    <td>{{ $usuario->pessoa->perfil }}</td>
+                                                @else
+                                                    <td>N/A</td> <!-- Ou qualquer valor padrão que você deseja exibir quando 'perfil' não está disponível -->
+                                                @endif
+                                                @if ($usuario->pessoa && $usuario->pessoa->agenda !== null)
+                                                    <td>{{ $usuario->pessoa->agenda->count() }}</td>
+                                                @else
+                                                    <td>N/A</td>
+                                                @endif
+                                            </tr>
+                                            @endforeach
+                                            </tbody>
+                                        </table>
+                                        <br>
+                                        <div class="row center">
+                                            {{ $users->links('custom.pagination') }}
+                                        </div>
+
+                                    </div>
                                 </div>
-                                <h5>Refeições Confirmadas</h5>
-                                <div class="carousel">
-                                @foreach ($refeicoesConfirmadas as $agenda)
-                                    @foreach ($agenda->cardapio as $cardapio)
-                                    <a class="carousel-item" href="#one!"><img src="{{ $cardapio->getImageForImg() }}"></a>
-                                    @endforeach
-                                @endforeach
+                            <div class="row">
+                                <div class="col s6">
+                                    <h5>Refeições Confirmadas</h5>
+                                        <div class="carousel">
+                                        @foreach ($refeicoesConfirmadas as $agenda)
+                                            @foreach ($agenda->cardapio as $cardapio)
+                                            <a class="carousel-item" href="#one!"><img src="{{ $cardapio->getImageForImg() }}"></a>
+                                            @endforeach
+                                        @endforeach
+                                        </div>
                                 </div>
+                            </div>
                             @break
                             @case('aluno')
                             @case('professor')

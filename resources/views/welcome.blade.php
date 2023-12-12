@@ -33,13 +33,13 @@
                     <li>
                         @auth
                         <a href="{{ url('/dashboard') }}" class="black-text">
-                            Dashboard
+                            Painel
                         </a>
                     </li>
                     <li>
                         @else
                         <a href="{{ route('login') }}" class="black-text">
-                            Login in
+                            Entrar
                         </a>
                     </li>
                     <!-- <li>
@@ -59,13 +59,13 @@
                 <li>
                     @auth
                     <a href="{{ url('/dashboard') }}" class="blue-text text-darken-2">
-                        Dashboard
+                        Painel
                     </a>
                 </li>
                 <li>
                     @else
                     <a href="{{ route('login') }}">
-                        Login in
+                        Entrar
                     </a>
                 </li>
                 <!-- <li>

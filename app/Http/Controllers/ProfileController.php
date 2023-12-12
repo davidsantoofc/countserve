@@ -48,8 +48,25 @@ class ProfileController extends Controller
 
         $user = $request->user();
 
+        // Use a relação "pessoa" para obter a instância de Pessoa associada ao usuário
+        $pessoa = $user->pessoa;
+
+        if ($pessoa) {
+            // Use a relação "agenda" para obter todas as instâncias de Agenda associadas à pessoa
+            $agendas = $pessoa->agenda;
+
+            // Delete cada entrada na tabela "agenda"
+            foreach ($agendas as $agenda) {
+                $agenda->delete();
+            }
+
+            // Delete a pessoa
+            $pessoa->delete();
+        }
+
         Auth::logout();
 
+        // Delete o usuário
         $user->delete();
 
         $request->session()->invalidate();
