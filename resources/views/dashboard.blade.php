@@ -25,9 +25,9 @@
 
                         @switch($perfil)
                             @case ('administrador')
-                                <h5>Refeições Cadastradas</h5>
                                 <div class="row">
                                     <div class="col s6">
+                                    <h2>Refeições Cadastradas</h2>
                                         <div class="carousel">
                                             @foreach ($cardapiosCadastrados as $cardapio)
                                                 <a class="carousel-item" href="#"><img src="{{ $cardapio->getImageForImg() }}"></a>
@@ -35,6 +35,8 @@
                                         </div>
                                     </div>
                                     <div class="col s6">
+                                        <h2>Usuários Cadastrados</h2>
+                                        <br>
                                         <table>
                                             <thead>
                                             <tr>
@@ -72,7 +74,7 @@
                                 </div>
                             <div class="row">
                                 <div class="col s6">
-                                    <h5>Refeições Confirmadas</h5>
+                                    <h2>Refeições Confirmadas</h2>
                                         <div class="carousel">
                                         @foreach ($refeicoesConfirmadas as $agenda)
                                             @foreach ($agenda->cardapio as $cardapio)
@@ -85,7 +87,7 @@
                             @break
                             @case('aluno')
                             @case('professor')
-                                <h1>Refeições Confirmadas</h1>
+                                <h2>Refeições Confirmadas</h2>
                                 <div class="carousel">
                                 @foreach ($refeicoesConfirmadas as $agenda)
                                     @foreach ($agenda->cardapio as $cardapio)

@@ -25,14 +25,14 @@
                 <input type="date" name="data" id="data" required>
             </div>
         </div>
-        
+
         <div class="row">
             <label for="foto">Foto:</label>
             <div class="col s12">
                 <img src="img/fotoDefault.png" width="100px" alt="Sem foto" srcset="" id="preview-img">
             </div>
             <div class="input-field col s12">
-                <input type="file" name="foto" id="foto" accept="image/png, image/jpeg" onchange="previewImage()">
+                <input type="file" name="foto" id="foto" accept="image/png, image/jpeg" onchange="previewImage()" required>
             </div>
         </div>
 
@@ -46,7 +46,7 @@
         function previewImage() {
             var input = document.getElementById('foto');
             var preview = document.getElementById('preview-img');
-            
+
             var file = input.files[0];
             var reader = new FileReader();
 

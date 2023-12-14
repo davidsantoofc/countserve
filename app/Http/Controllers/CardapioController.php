@@ -37,10 +37,14 @@ class CardapioController extends Controller
     }
 
     public function destroy($id){
+    // Verifique se existem registros relacionados em Agenda
+    $agendaRecords = Agenda::where('cardapio_id', $id)->get();
+
+    if ($agendaRecords->count() > 0) {
+        Agenda::where('cardapio_id', $id)->delete();
+    }
         $cardapio = Cardapio::find($id);
         $cardapio->delete();
-
-        $cardapios = Cardapio::all();
 
         return redirect('/cardapio')->with('sucesso', 'Cardapio removido com sucesso!');
     }
